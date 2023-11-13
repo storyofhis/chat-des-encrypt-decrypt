@@ -413,6 +413,10 @@ while 1:
 
     print()
     incoming_message = conn.recv(1024)
-    incoming_message = incoming_message.decode()
-    print(' Client : ', incoming_message)
+    incoming_message_bytes = incoming_message.split(b',')
+    incoming_message_bytes = [x for x in incoming_message_bytes if x]
+    # Decrypt the ciphertext using DES
+    decrypted_incoming_message = des.decrypt_message([int(x) for x in incoming_message_bytes])
+    
+    print('Decrypted message from Client:', decrypted_incoming_message)
     print()

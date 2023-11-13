@@ -400,6 +400,8 @@ while 1:
 
     # Encrypt the message using DES 
     chipertext = des.encrypt_message(message.decode())
+    print('Plaintext of Client: ', message)
+    print('Chipertext of Client: ', chipertext)
 
     # Serialize the list of integers to bytes
     chipertext_bytes = b','.join(str(x).encode() for x in chipertext)
